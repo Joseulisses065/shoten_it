@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  mysql:
+    container_name: 'shorten_it_mysql'
+    image: 'mysql:latest'
+    environment:
+      - MYSQL_DATABASE=shortendb
+      - MYSQL_PASSWORD= docker
+      - MYSQL_ROOT_PASSWORD=docker
+      - MYSQL_USER=docker
+    ports:
+      - '3306:3306'
