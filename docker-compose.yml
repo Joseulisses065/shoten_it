@@ -2,7 +2,7 @@ version: '3.8'
 services:
   mysql:
     container_name: 'shorten_it_mysql'
-    image: 'mysql:latest'
+    image: 'mysql:8.1'
     environment:
       - MYSQL_DATABASE=shortendb
       - MYSQL_PASSWORD= docker
