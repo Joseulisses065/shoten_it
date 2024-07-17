@@ -1,6 +1,10 @@
+cors:
+  originPatterns: http://localhost:3000,http://localhost:8080
 spring:
   application:
     name: shorten_it
+  flyway:
+    locations: classpath:db/migration
   datasource:
     url: "jdbc:mysql://172.30.0.2:3306/shortendb"
     driver-class-name: com.mysql.cj.jdbc.Driver

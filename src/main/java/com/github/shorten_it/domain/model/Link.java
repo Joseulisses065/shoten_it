@@ -3,12 +3,15 @@ package com.github.shorten_it.domain.model;
 import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
+@Table(name = "links")
+@EntityListeners(AuditingEntityListener.class)
 public class Link implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,25 +22,25 @@ public class Link implements Serializable {
     private String title;
     @Column(nullable = false)
     private String description;
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false, unique = true)
     private String shot_url;
     @CreatedDate
-    @Column(nullable = false, updatable = false)
-    private LocalDate createdAt;
+    @Column(nullable = false,name = "created_at")
+    private LocalDateTime createdAt;
     @LastModifiedDate
-    @Column(nullable = false)
-    private LocalDate updatedAt;
+    @Column(nullable = false,name = "updated_at")
+    private LocalDateTime updatedAt;
 
     public Link() {
     }
 
-    public Link(String url, String title, String description, String shot_url, LocalDate createdAt, LocalDate updatedAt) {
+    public Link(Long id, String url, String title, String description, String shot_url) {
+        this.id = id;
         this.url = url;
         this.title = title;
         this.description = description;
         this.shot_url = shot_url;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+
     }
 
     public Long getId() {
@@ -80,19 +83,19 @@ public class Link implements Serializable {
         this.shot_url = shot_url;
     }
 
-    public LocalDate getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDate createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public LocalDate getUpdatedAt() {
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDate updatedAt) {
+    public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 

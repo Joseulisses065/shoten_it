@@ -1,20 +1,23 @@
 package com.github.shorten_it.domain.dto;
 
-import java.time.LocalDate;
+import org.springframework.hateoas.RepresentationModel;
 
-public class LinkResponseDto {
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+public class LinkResponseDto extends RepresentationModel<LinkResponseDto> {
     private Long id;
     private String url;
     private String title;
     private String description;
     private String shot_url;
-    private LocalDate createdAt;
-    private LocalDate updatedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     public LinkResponseDto() {
     }
 
-    public LinkResponseDto(Long id, String url, String title, String description, String shot_url, LocalDate createdAt, LocalDate updatedAt) {
+    public LinkResponseDto(Long id, String url, String title, String description, String shot_url, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.url = url;
         this.title = title;
@@ -64,19 +67,19 @@ public class LinkResponseDto {
         this.shot_url = shot_url;
     }
 
-    public LocalDate getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDate createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public LocalDate getUpdatedAt() {
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDate updatedAt) {
+    public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 }
